@@ -1,0 +1,30 @@
+Programming Assignment 2: Subject-Specific Web Crawler
+
+Languages/Versions Used:
+	Python 2.7.11
+
+File Structure:
+	docs/: default location to store html files from crawler
+	crawler.py: source code for web crawler
+
+Dependencies:
+	BeautifulSoup (HTML Parser):
+	http://www.crummy.com/software/BeautifulSoup/
+
+	Install BeautifulSoup
+	http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup
+
+	Quick instructions:
+		- pip install beautifulsoup4
+
+Usage:
+	python crawler.py -u URL [-q QUERY] [-docs DOCS_PATH] [-m MAX_PAGES] [-t]
+
+	required arguments:
+		-u URL           The URL from which to start the crawl
+
+	optional arguments:
+		-q QUERY         The query to find related pages
+		-docs DOCS_PATH  The path where the documents are stored (default: docs)
+		-m MAX_PAGES     The maximum number of pages to download (default: 50)
+		-t, --trace      Include to generate a trace
