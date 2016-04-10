@@ -84,13 +84,17 @@ class Crawler(object):
         if (not self.robotSafe(url)):
             return url, False
 
-        response = urllib2.urlopen(url)
+        try:
+            response = urllib2.urlopen(url)
 
-        if (response.info().getheader('Content-Type').lower() == 'text/html; charset=utf-8'):
-            html = response.read()
-            self.writePage(url, name, html)
-            return url, html
-        else:
+            if (response.info().getheader('Content-Type').lower() == 'text/html; charset=utf-8'):
+                html = response.read()
+                self.writePage(url, name, html)
+                return url, html
+            else:
+                return url, False
+        except urllib2.HTTPError as e:
+            print "Error:", e.code, ":", e.reason
             return url, False
 
     def writePage(self, url, name, html):
