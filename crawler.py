@@ -94,7 +94,8 @@ class Crawler(object):
             else:
                 return url, False
         except urllib2.HTTPError as e:
-            print "Error:", e.code, ":", e.reason
+            if (self.debug):
+                print "Error:", e.code, ":", e.reason
             return url, False
 
     def writePage(self, url, name, html):
